@@ -4,6 +4,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 import calendar
+import colorama
 import contextlib
 import logging
 import logging.handlers
@@ -34,6 +35,7 @@ class ColourFormatter(logging.Formatter):
             fmt = "%(message)s"
         super().__init__(fmt)
         self.log_colours = {"WARNING": 34, "ERROR": 31}  # blue, red
+        colorama.init()  # required on Windows, optional on Linux and others.
 
     def format(self, record):
         result = super().format(record)
